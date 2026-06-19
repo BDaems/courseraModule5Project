@@ -32,19 +32,33 @@
     </section>
 
     <section id="projects">
-        <h2>Projects</h2>
+        <div class="projects-header">
+            <h2>Projects</h2>
+            <details class="project-filters">
+                <summary class="project-filter-summary"><span class="project-filter-summary-label">Project filters</span></summary>
+                <div class="project-filter-panel" aria-label="Project filters">
+                    <div class="project-filter-options"></div>
+                </div>
+            </details>
+        </div>
         <p>I have worked on several exciting projects that showcase my skills and passion for web development.</p>
         
-        <article>
+        <article data-category="data-engineering" style="display: block;">
             <h3>Project 1: Market Data Ingestion Pipeline</h3>
-            <img src="wwwroot/images/ingestion.png" alt="Architecture diagram showing the MacroMarketData ingestion pipeline with data sources on the left connecting to validation and normalization processors in the center, then flowing to the PostgreSQL database on the right">
-            <p>The MacroMarketData ingestion pipeline automatically retrieves external financial and macro‑economic data, validates and normalizes it, and stores the cleaned results in the MacroMarketData PostgreSQL database so all downstream analytics always operate on fresh, reliable inputs.</p>
+            <img src="wwwroot/images/ingestion.png" alt="Architecture diagram showing the MacroMarketData ingestion pipeline with data sources on the left connecting to validation and normalization processors in the center, then flowing to the PostgreSQL database on the right" data-lightbox="project-image">
+            <p>The MacroMarketData ingestion pipeline automatically retrieves external financial and macro‑economic data, validates and normalizes it, and stor d results in the MacroMarketData PostgreSQL database so all downstream analytics always operate on fresh, reliable inputs.</p>
         </article>
 
-        <article>
+        <article data-category="quality-monitoring" style="display: block;">
             <h3>Project 2: Market Data Quality Monitor</h3>
-            <img src="wwwroot/images/dataQuality.png" alt="System diagram illustrating the Market Data Quality Monitor with incoming datasets being validated through schema checks, timestamp verification, and value integrity tests before being approved or rejected">
+            <img src="wwwroot/images/dataQuality.png" alt="System diagram illustrating the Market Data Quality Monitor with incoming datasets being validated through schema checks, timestamp verification, and value integrity tests before being approved or rejected" data-lightbox="project-image">
             <p>The Market Data Quality Monitor validates every dataset entering MacroMarketData by checking schema, timestamps, and value integrity, ensuring only clean and reliable data flows into the analytics layer.</p>
+        </article>
+
+        <article data-category="quality-monitoring" style="display: block;">
+            <h3>Project 3: Data Recency Monitor</h3>
+            <img src="wwwroot/images/dataLatency.png" alt="System diagram illustrating the Data Recency Monitor tracking dataset refresh times and flagging stale inputs" data-lightbox="project-image">
+            <p>The Data Recency Monitor tracks when each dataset was last refreshed, flags stale inputs before they reach downstream analytics, and helps ensure MacroMarketData decisions are always based on current information.</p>
         </article>
     </section>
 
@@ -62,23 +76,26 @@
         <h2 id="contact-heading">Contact</h2>
         <p>Feel free to reach out to me for any inquiries or collaborations.</p>
         
-        <form aria-labelledby="contact-heading">
+        <form aria-labelledby="contact-heading" id="contact-form" novalidate>
             <div>
                 <label for="contact-name">Name:</label>
                 <input type="text" id="contact-name" name="contactName" autocomplete="name" required>
+                <div id="contactNameError" class="invalid-feedback"></div>
             </div>
 
             <div>
                 <label for="contact-email">Email:</label>
                 <input type="email" id="contact-email" name="contactEmail" autocomplete="email" required>
+                <div id="contactEmailError" class="invalid-feedback"></div>
             </div>
 
             <div>
                 <label for="contact-message">Message:</label>
                 <textarea id="contact-message" name="contactMessage" rows="5" autocomplete="off" required></textarea>
-            </div>
+                <div id="contactMessageError" class="invalid-feedback"></div>
 
             <button type="submit">Reach out to me</button>
+            <p class="form-status" id="contact-form-status" aria-live="polite"></p>
         </form>
     </section>
     </main>
@@ -87,19 +104,14 @@
         <!-- copyright, links, contact -->
     </footer>
 
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const siteNavigation = document.querySelector('#site-navigation');
+    <div class="project-lightbox" id="project-lightbox" aria-hidden="true">
+        <div class="project-lightbox__backdrop" data-lightbox-close></div>
+        <div class="project-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Project image preview">
+            <button class="project-lightbox__close" type="button" data-lightbox-close aria-label="Close image preview">×</button>
+            <img class="project-lightbox__image" src="" alt="">
+        </div>
+    </div>
 
-        if (menuToggle && siteNavigation) {
-            menuToggle.addEventListener('click', () => {
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                const nextState = !isExpanded;
-                menuToggle.setAttribute('aria-expanded', String(nextState));
-                menuToggle.classList.toggle('is-active', nextState);
-                siteNavigation.classList.toggle('is-open');
-            });
-        }
-    </script>
+    <script src="wwwroot/scripts/script.js"></script>
 </body>
 </html>
