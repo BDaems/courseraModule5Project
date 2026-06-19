@@ -3,10 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="My professional portfolio showcasing projects in data ingestion pipelines, market data quality monitoring, and web development skills including Blazor, PowerShell scripting, and Git integration.">
+    <title>Professional Portfolio - Data Engineering & Web Development</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* WCAG AA Contrast Compliance */
+        body {
+            background-color: #ffffff;
+            color: #212121;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #000000;
+        }
+
+        a {
+            color: #0051ba;
+            text-decoration: underline;
+        }
+
+        a:visited {
+            color: #6b2c91;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        input, textarea, select {
+            background-color: #ffffff;
+            color: #212121;
+            border: 2px solid #999999;
+            padding: 8px;
+        }
+
+        label {
+            color: #212121;
+            font-weight: 600;
+        }
+
+        section {
+            background-color: #ffffff;
+            color: #212121;
+        }
+
+        /* Keyboard Navigation Accessibility Styles */
+        a:focus,
+        button:focus,
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 3px solid #0051ba;
+            outline-offset: 2px;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 3px solid #0051ba;
+            outline-offset: 2px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome</h1>
-    <p>This is a basic HTML structure.</p>
+    <header>
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Welcome to my portfolio. I'm existed to learn web development and to be able to create meaningful content.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Here are some of my recent projects and work experience.</p>
+        
+        <article>
+            <h3>Project 1: Market Data Ingestion Pipeline</h3>
+            <img src="ingestion.png" alt="Architecture diagram showing the MacroMarketData ingestion pipeline with data sources on the left connecting to validation and normalization processors in the center, then flowing to the PostgreSQL database on the right">
+            <p>The MacroMarketData ingestion pipeline automatically retrieves external financial and macro‑economic data, validates and normalizes it, and stores the cleaned results in the MacroMarketData PostgreSQL database so all downstream analytics always operate on fresh, reliable inputs.</p>
+        </article>
+
+        <article>
+            <h3>Project 2: Market Data Quality Monitor</h3>
+            <img src="dataquality.png" alt="System diagram illustrating the Market Data Quality Monitor with incoming datasets being validated through schema checks, timestamp verification, and value integrity tests before being approved or rejected">
+            <p>The Market Data Quality Monitor validates every dataset entering MacroMarketData by checking schema, timestamps, and value integrity, ensuring only clean and reliable data flows into the analytics layer.</p>
+        </article>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <p>Here are some of my key skills:</p>
+        <ul>
+            <li>Blazor Web Development</li>
+            <li>Business analysis</li>
+            <li>PowerShell Scripting</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me for any inquiries or collaborations.</p>
+        
+        <form aria-label="Contact form">
+            <div>
+                <label for="contact-name">Name:</label>
+                <input type="text" id="contact-name" name="name" required aria-required="true">
+            </div>
+
+            <div>
+                <label for="contact-email">Email:</label>
+                <input type="email" id="contact-email" name="email" required aria-required="true">
+            </div>
+
+            <div>
+                <label for="contact-message">Message:</label>
+                <textarea id="contact-message" name="message" rows="5" required aria-required="true"></textarea>
+            </div>
+
+            <button type="submit">Reach out to me</button>
+        </form>
+    </section>
+    </main>
+
+    <footer role="contentinfo">
+        <!-- copyright, links, contact -->
+    </footer>
 </body>
 </html>
