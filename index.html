@@ -5,80 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="My professional portfolio showcasing projects in data ingestion pipelines, market data quality monitoring, and web development skills including Blazor, PowerShell scripting, and Git integration.">
     <title>Professional Portfolio - Data Engineering & Web Development</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* WCAG AA Contrast Compliance */
-        body {
-            background-color: #ffffff;
-            color: #212121;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: #000000;
-        }
-
-        a {
-            color: #0051ba;
-            text-decoration: underline;
-        }
-
-        a:visited {
-            color: #6b2c91;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: #ffffff;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        button:hover {
-            background-color: #388e3c;
-        }
-
-        input, textarea, select {
-            background-color: #ffffff;
-            color: #212121;
-            border: 2px solid #999999;
-            padding: 8px;
-        }
-
-        label {
-            color: #212121;
-            font-weight: 600;
-        }
-
-        section {
-            background-color: #ffffff;
-            color: #212121;
-        }
-
-        /* Keyboard Navigation Accessibility Styles */
-        a:focus,
-        button:focus,
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: 3px solid #0051ba;
-            outline-offset: 2px;
-        }
-
-        a:focus-visible,
-        button:focus-visible,
-        input:focus-visible,
-        textarea:focus-visible,
-        select:focus-visible {
-            outline: 3px solid #0051ba;
-            outline-offset: 2px;
-        }
-    </style>
+    <link rel="stylesheet" href="wwwroot/styles/styles.css">
 </head>
 <body>
     <header>
-        <nav aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="site-navigation" aria-label="Main navigation">
             <ul>
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -92,22 +28,22 @@
 
     <section id="about">
         <h2>About Me</h2>
-        <p>Welcome to my portfolio. I'm existed to learn web development and to be able to create meaningful content.</p>
+        <p>Welcome to my portfolio. I am excited to share my journey as I continue learning web development and building projects that solve real problems. I enjoy combining creativity, problem solving, and technology to create meaningful digital experiences. Through practice, I am developing skills in HTML, CSS, and related tools while also strengthening my understanding of design, accessibility, and user experience. My goal is to keep improving through hands-on projects, collaboration, and curiosity. This portfolio highlights the work I have done so far and reflects my motivation to grow into a confident and capable web developer over time in every project.</p>
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
-        <p>Here are some of my recent projects and work experience.</p>
+        <p>I have worked on several exciting projects that showcase my skills and passion for web development.</p>
         
         <article>
             <h3>Project 1: Market Data Ingestion Pipeline</h3>
-            <img src="ingestion.png" alt="Architecture diagram showing the MacroMarketData ingestion pipeline with data sources on the left connecting to validation and normalization processors in the center, then flowing to the PostgreSQL database on the right">
+            <img src="wwwroot/images/ingestion.png" alt="Architecture diagram showing the MacroMarketData ingestion pipeline with data sources on the left connecting to validation and normalization processors in the center, then flowing to the PostgreSQL database on the right">
             <p>The MacroMarketData ingestion pipeline automatically retrieves external financial and macro‑economic data, validates and normalizes it, and stores the cleaned results in the MacroMarketData PostgreSQL database so all downstream analytics always operate on fresh, reliable inputs.</p>
         </article>
 
         <article>
             <h3>Project 2: Market Data Quality Monitor</h3>
-            <img src="dataquality.png" alt="System diagram illustrating the Market Data Quality Monitor with incoming datasets being validated through schema checks, timestamp verification, and value integrity tests before being approved or rejected">
+            <img src="wwwroot/images/dataQuality.png" alt="System diagram illustrating the Market Data Quality Monitor with incoming datasets being validated through schema checks, timestamp verification, and value integrity tests before being approved or rejected">
             <p>The Market Data Quality Monitor validates every dataset entering MacroMarketData by checking schema, timestamps, and value integrity, ensuring only clean and reliable data flows into the analytics layer.</p>
         </article>
     </section>
@@ -122,24 +58,24 @@
         </ul>
     </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
+    <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
         <p>Feel free to reach out to me for any inquiries or collaborations.</p>
         
-        <form aria-label="Contact form">
+        <form aria-labelledby="contact-heading">
             <div>
                 <label for="contact-name">Name:</label>
-                <input type="text" id="contact-name" name="name" required aria-required="true">
+                <input type="text" id="contact-name" name="contactName" autocomplete="name" required>
             </div>
 
             <div>
                 <label for="contact-email">Email:</label>
-                <input type="email" id="contact-email" name="email" required aria-required="true">
+                <input type="email" id="contact-email" name="contactEmail" autocomplete="email" required>
             </div>
 
             <div>
                 <label for="contact-message">Message:</label>
-                <textarea id="contact-message" name="message" rows="5" required aria-required="true"></textarea>
+                <textarea id="contact-message" name="contactMessage" rows="5" autocomplete="off" required></textarea>
             </div>
 
             <button type="submit">Reach out to me</button>
@@ -150,5 +86,20 @@
     <footer role="contentinfo">
         <!-- copyright, links, contact -->
     </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const siteNavigation = document.querySelector('#site-navigation');
+
+        if (menuToggle && siteNavigation) {
+            menuToggle.addEventListener('click', () => {
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                const nextState = !isExpanded;
+                menuToggle.setAttribute('aria-expanded', String(nextState));
+                menuToggle.classList.toggle('is-active', nextState);
+                siteNavigation.classList.toggle('is-open');
+            });
+        }
+    </script>
 </body>
 </html>
